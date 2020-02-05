@@ -182,6 +182,8 @@ let
         ${stdenv.lib.optionalString (!noDev) (bundleDependencies devPackages)}
         cd ..
 
+        runHook preDump
+
         # Reconstruct autoload scripts
         # We use the optimize feature because Nix packages cannot change after they have been built
         # Using the dynamic loader for a Nix package is useless since there is nothing to dynamically reload.
